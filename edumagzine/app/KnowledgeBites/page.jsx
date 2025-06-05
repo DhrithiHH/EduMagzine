@@ -52,7 +52,7 @@ export default function KnowledgeBitesPage() {
   return (
     <main className="min-h-[85vh] bg-gradient-to-tr from-sky-50 to-sky-100 flex items-center justify-center px-4 py-8">
       <motion.section
-        className="bg-white shadow-xl rounded-xl p-10 max-w-xl w-full border border-gray-200 relative"
+        className="bg-white shadow-xl rounded-xl p-10 max-w-[70vw]  max-h-[80-vh] h-80vh w-full border border-gray-200 relative"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
@@ -63,20 +63,21 @@ export default function KnowledgeBitesPage() {
         </h1>
 
         {/* Badge */}
-        <div className="mb-2">
-          <span className="inline-block text-sm bg-blue-100 text-blue-700 px-3 py-1 rounded-full">
+        <div className=" h-auto rounded-xl bg-blue-50 px-5 py-5">
+        <div className="mb-2 relative">
+          <span className="inline-block text-sm bg-blue-100 text-blue-700 px-3 py-1 rounded-full absolute -top-3 -left-2">
             Did you know?
           </span>
         </div>
 
         {/* Fact */}
-        <div className="mb-6 min-h-[100px] flex items-center justify-center">
+        <div className=" min-h-[100px] flex items-center justify-center">
           {loading ? (
             <p className="text-gray-400 text-lg italic">Loading a fun fact...</p>
           ) : (
             <motion.p
               key={fact}
-              className="text-gray-800 text-xl font-medium leading-relaxed"
+              className="text-gray-800 text-xl font-medium leading-relaxed m-15"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.3 }}
@@ -84,11 +85,11 @@ export default function KnowledgeBitesPage() {
               “{fact}”
             </motion.p>
           )}
-        </div>
+        </div></div>
 
         {/* Reactions */}
         {!loading && (
-          <div className="flex gap-4 justify-center mb-4">
+          <div className="flex gap-4 justify-center my-6">
             {["👍", "🤯", "😂"].map((emoji) => (
               <button
                 key={emoji}

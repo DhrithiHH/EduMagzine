@@ -1,16 +1,17 @@
 'use client';
 import { motion } from 'framer-motion';
 
-const DURATION = 0.25;
+const DURATION = 0.30;
 const STAGGER = 0.025;
 
 export const FlipLink = ({ children, href }) => {
+
   return (
     <motion.a
       initial="initial"
       whileHover="hovered"
       href={href}
-      className="relative block overflow-hidden whitespace-nowrap text-4xl font-black uppercase sm:text-6xl md:text-7xl lg:text-8xl"
+      className="relative block overflow-hidden whitespace-nowrap text-5xl font-black text-gray-600 uppercase sm:text-5xl md:text-6xl lg:text-8xl"
       style={{
         lineHeight: 0.75,
       }}

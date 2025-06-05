@@ -50,16 +50,16 @@ import React from 'react';
 
 export default function Navbar() {
   return (
-    <nav className=" px-8 py-1  h-5vh  top-0">
+    <nav className=" px-8 py-1  h-1vh  sticky z-30 top-0 bg-gray-100">
       <div className="max-w-7xl mx-auto my-auto px-4 py-3 flex justify-between items-center">
-        <h1 className="text-4xl font-extrabold text-black ">EduMagzine</h1>
+        <h1 className="text-4xl  text-black .anton-regular">EduMagzine</h1>
         <ul className="flex gap-6 text-sm">
-          <li><a href="#knowledge" className="hover:text-yellow-300  text">Knowledge</a></li>
-          <li><a href="#explore" className="hover:text-yellow-300 text">Explore</a></li>
-          <li><a href="#science" className="hover:text-yellow-300 text">Science</a></li>
-          <li><a href="#ideas" className="hover:text-yellow-300 text">Ideas</a></li>
-          <li><a href="#language" className="hover:text-yellow-300 text">Literature</a></li>
-          <li><a href="#mind" className="hover:text-yellow-300 text">Mind & Life</a></li>
+          <li><a href="/KnowledgeBites" className="hover:text-yellow-300 text-base  text text-gray-700">Knowledge Bites</a></li>
+          {/* <li><a href="#explore" className="hover:text-yellow-300 text">Explore</a></li> */}
+          <li><a href="/diy" className="hover:text-yellow-300 text text-base text-gray-700">DIY</a></li>
+          {/* <li><a href="#ideas" className="hover:text-yellow-300 text">Ideas</a></li> */}
+          <li><a href="#language" className="hover:text-yellow-300  text-base text text-gray-700">Literature</a></li>
+          <li><a href="#mind" className="hover:text-yellow-300 text text-base text-gray-700">Puzzles</a></li>
         </ul>
       </div>
     </nav>

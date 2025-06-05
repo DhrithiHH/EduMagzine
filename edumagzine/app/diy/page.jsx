@@ -89,7 +89,7 @@ export default function DiyPage() {
             </label>
             <select
               id="category"
-              className="border rounded px-3 py-1"
+              className="border border-gray-500 rounded px-3 py-1"
               value={filter}
               onChange={(e) => setFilter(e.target.value)}
             >
@@ -104,7 +104,7 @@ export default function DiyPage() {
           <input
             type="search"
             placeholder="Search articles..."
-            className="border rounded px-3 py-1 w-full sm:w-64"
+            className="border border-gray-500 rounded px-3 py-1 w-full sm:w-64"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
@@ -113,13 +113,13 @@ export default function DiyPage() {
 
       {/* Article Grid */}
       <div
-        className="columns-1 sm:columns-2 md:columns-3 gap-10 space-y-4"
+        className="columns-1 sm:columns-2 md:columns-3 gap-20 space-y-10 sp"
         style={{ columnGap: "1rem" }}
       >
         {filteredArticles.map((article) => (
           <article
   key={article.id}
-  className="break-inside-avoid bg-white rounded shadow-md overflow-hidden mb-4 transform transition duration-300 hover:scale-105"
+  className="break-inside-avoid bg-gray-100 rounded shadow-md overflow-hidden mb-4 transform transition duration-300 hover:scale-105"
 >
             <img
               src={article.image}
@@ -127,9 +127,9 @@ export default function DiyPage() {
               className="w-full object-cover rounded-t"
             />
             <div className="p-4">
-              <h2 className="font-semibold mb-2">{article.title}</h2>
-              <p className="text-sm text-gray-600 mb-1">{article.description}</p>
-              <p className="text-xs text-gray-500">
+              <h2 className="font-semibold mb-2 text-gray-900">{article.title}</h2>
+              <p className="text-sm text-gray-800 mb-1">{article.description}</p>
+              <p className="text-xs text-gray-700">
                 {article.repins} repins • {article.category}
               </p>
             </div>
