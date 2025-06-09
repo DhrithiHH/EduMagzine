@@ -24,7 +24,7 @@ export const SmoothScrollHero = () => {
           //   syncTouch: true,
         }}
       >
-        <Nav />
+        {/* <Nav /> */}
         <Hero />
         <Schedule />
         <Footer />
