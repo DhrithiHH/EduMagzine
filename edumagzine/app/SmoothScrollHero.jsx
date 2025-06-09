@@ -236,7 +236,7 @@ const Schedule = () => {
       id="launch-schedule"
       className="mx-auto max-w-7xl px-4 py-16 text-white"
     >
-      <h2 className="mb-8 text-3xl font-semibold">Launch Schedule</h2>
+      <h2 className="mb-8 text-3xl font-semibold">Frame of Achievers</h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {images.map(({ src, alt, name, designation, slug }, index) => (
