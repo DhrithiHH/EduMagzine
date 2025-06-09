@@ -1,67 +1,98 @@
-// 'use client';
+'use client'
 
-// import Link from 'next/link';
+import { useState, Fragment, useRef } from 'react'
+import { Popover, Transition } from '@headlessui/react'
+import { ChevronDownIcon } from '@heroicons/react/20/solid'
 
-// export default function Navbar() {
-//   return (
-//     <nav className="flex justify-between items-center px-8 py-4 border-b">
-//       <div className="flex items-center gap-2 text-xl font-bold">
-//         <img src="/vercel.svg" alt="Logo" className="w-6 h-6" />
-//         RemoteControl
-//       </div>
-//       <div className="flex gap-6 text-sm text-gray-700">
-//         <Link href="#">About</Link>
-//         <Link href="#">Artists</Link>
-//         <Link href="#">Latest News</Link>
-//         <Link href="#">Tours</Link>
-//         <Link href="#">Record Stores</Link>
-//       </div>
-//       <div className="flex gap-6 text-sm text-gray-700">
-//         <Link href="#">Queens Of The Stone Age</Link>
-//         <Link href="#">Music News</Link>
-//       </div>
-//     </nav>
-//   );
-// }
-
-
-// // import React from 'react';
-
-// // export default function Navbar() {
-// //   return (
-// //     <nav className="bg-blue-800 text-white shadow-md sticky top-0 z-50">
-// //       <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
-// //         <h1 className="text-xl font-bold">EduMagzine</h1>
-// //         <ul className="flex gap-6 text-sm">
-// //           <li><a href="#knowledge" className="hover:text-yellow-300">Knowledge</a></li>
-// //           <li><a href="#explore" className="hover:text-yellow-300">Explore</a></li>
-// //           <li><a href="#science" className="hover:text-yellow-300">Science</a></li>
-// //           <li><a href="#ideas" className="hover:text-yellow-300">Ideas</a></li>
-// //           <li><a href="#language" className="hover:text-yellow-300">Literature</a></li>
-// //           <li><a href="#mind" className="hover:text-yellow-300">Mind & Life</a></li>
-// //         </ul>
-// //       </div>
-// //     </nav>
-// //   );
-// // }
-
-'use client';
-import React from 'react';
-
-export default function Navbar() {
+export default function FlyoutNavbar() {
   return (
-    <nav className=" px-8 py-1  h-1vh  sticky z-30 top-0 bg-gray-100">
-      <div className="max-w-7xl mx-auto my-auto px-4 py-3 flex justify-between items-center">
-        <h1 className="text-4xl  text-black .anton-regular">EduMagzine</h1>
-        <ul className="flex gap-6 text-sm">
-          <li><a href="/KnowledgeBites" className="hover:text-yellow-300 text-base  text text-gray-700">Knowledge Bites</a></li>
-          {/* <li><a href="#explore" className="hover:text-yellow-300 text">Explore</a></li> */}
-          <li><a href="/diy" className="hover:text-yellow-300 text text-base text-gray-700">DIY</a></li>
-          {/* <li><a href="#ideas" className="hover:text-yellow-300 text">Ideas</a></li> */}
-          <li><a href="#language" className="hover:text-yellow-300  text-base text text-gray-700">Literature</a></li>
-          <li><a href="#mind" className="hover:text-yellow-300 text text-base text-gray-700">Puzzles</a></li>
-        </ul>
+    <nav className="bg-black text-white">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="flex justify-between items-center py-4">
+          <div className="text-2xl font-bold">Placeholder ⚡</div>
+          <div className="flex items-center gap-8">
+            <FlyoutMenu />
+            <a href="#">Pricing</a>
+            <a href="#">Careers</a>
+            <a href="#">Documentation</a>
+            <div className="ml-4 flex gap-2">
+              <button className="border px-4 py-1 rounded">Sign in</button>
+              <button className="bg-indigo-600 px-4 py-1 rounded text-white">Schedule a Demo</button>
+            </div>
+          </div>
+        </div>
       </div>
-    </nav>
-  );
+    </nav>
+  )
+}
+
+function FlyoutMenu() {
+  const [open, setOpen] = useState(false)
+  const timeoutRef = useRef(null)
+
+  // Open menu on mouse enter
+  const handleMouseEnter = () => {
+    clearTimeout(timeoutRef.current)
+    setOpen(true)
+  }
+
+  // Close menu on mouse leave, delayed to allow moving to panel smoothly
+  const handleMouseLeave = () => {
+    timeoutRef.current = setTimeout(() => setOpen(false), 150)
+  }
+
+  return (
+    <Popover className="relative" as="div" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} open={open}>
+      <>
+        <Popover.Button className="flex items-center gap-1 hover:text-indigo-400" as="div">
+          About us
+          <ChevronDownIcon className={`w-4 h-4 transition ${open ? 'rotate-180' : ''}`} />
+        </Popover.Button>
+
+        <Transition
+          as={Fragment}
+          show={open}
+          enter="transition ease-out duration-200"
+          enterFrom="opacity-0 translate-y-1"
+          enterTo="opacity-100 translate-y-0"
+          leave="transition ease-in duration-150"
+          leaveFrom="opacity-100 translate-y-0"
+          leaveTo="opacity-0 translate-y-1"
+        >
+          <Popover.Panel
+            static
+            className="absolute z-10 mt-3 w-screen max-w-4xl left-1/2 -translate-x-1/2 bg-white text-black shadow-lg rounded-lg overflow-hidden"
+          >
+            <div className="flex">
+              {/* Left Section */}
+              <div className="bg-black text-white p-6 w-1/3">
+                <h3 className="text-lg font-semibold">About us</h3>
+                <p className="mt-2 text-sm">
+                  Placeholder is the world's leading placeholder company.
+                </p>
+                <a href="#" className="mt-4 inline-block text-indigo-400">
+                  Learn more →
+                </a>
+              </div>
+
+              {/* Right Section */}
+              <div className="grid grid-cols-2 gap-4 p-6 w-2/3">
+                {[
+                  { title: 'Features', desc: 'Lorem ipsum dolor sit amet consectetur.' },
+                  { title: 'Testimonials', desc: 'Lorem ipsum dolor sit amet consectetur.' },
+                  { title: 'Press', desc: 'Lorem ipsum dolor sit amet consectetur.' },
+                  { title: 'Blog', desc: 'Lorem ipsum dolor sit amet consectetur.' },
+                ].map((item, idx) => (
+                  <div key={idx} className="border rounded p-4 hover:bg-gray-50">
+                    <h4 className="font-semibold">{item.title}</h4>
+                    <p className="text-sm mt-1 text-gray-600">{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Popover.Panel>
+        </Transition>
+      </>
+    </Popover>
+  )
 }

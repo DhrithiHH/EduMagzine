@@ -50,3 +50,16 @@ body {
   display: none; /* Chrome, Safari, Opera */
 }
 
+
+
+/* styles/globals.css or in a module */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease-out;
+}
+
+.reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
